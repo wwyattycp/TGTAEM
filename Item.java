@@ -33,6 +33,16 @@ public class Item
     this.description = description;
   }
 
+  public String getDescription()
+  {
+    return description;
+  }
+
+  public void addDescription(String description)
+  {
+    this.description += description;
+  }
+
   public void checkActions()
   {
     int x = 0;
@@ -44,7 +54,7 @@ public class Item
       {
         availableActions.add(possibleActions.get(x));
       }
-      x+=1;
+      x += 1;
     }
 
     x = 0;
@@ -55,7 +65,37 @@ public class Item
       {
         possibleActions.add(availableActions.get(x));
       }
-      x+=1;
+      x += 1;
     }
+  }
+
+  public ArrayList getAllActions()
+  {
+    ArrayList actions = new ArrayList();
+    int x = 0;
+    while(x < availableActions.size())
+    {
+      actions.add(availableActions.get(x));
+      x += 1;
+    }
+    x = 0;
+    while(x < possibleActions.size())
+    {
+      actions.add(possibleActions.get(x));
+      x += 1;
+    }
+    return actions;
+  }
+
+  public ArrayList getAvailableActions()
+  {
+    checkActions();
+    return availableActions;
+  }
+
+  public ArrayList getPossibleActions()
+  {
+    checkActions();
+    return possibleActions;
   }
 }
